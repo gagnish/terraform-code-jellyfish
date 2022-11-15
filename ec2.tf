@@ -9,4 +9,10 @@ resource "aws_instance" "dev-instance" {
   tags = {
     Name = "dev-ec2-server" 
   }
+  user_data = <<EOF
+  #!/bin/bash
+  apt-get update
+  apt-get install nginx
+  echo "Hi Jellyfish Technologies" >/var/www/html/index.nginx-debian.html
+  EOF
 }
